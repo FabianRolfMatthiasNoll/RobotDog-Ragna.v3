@@ -1,0 +1,90 @@
+import math
+
+class Robot:
+    servos = []
+    name = 'Ragna'
+
+    def turnLeft(self):
+        pass
+
+    def turnRight(self):
+        pass
+
+    def moveLeft(self):
+        pass
+
+    def moveRight(self):
+        pass
+
+    def moveForward(self):
+        pass
+
+    def moveBackwards(self):
+        pass
+
+    def sit(self):
+        pass
+
+    def standUp (self):
+        pass
+
+    def layDown(self):
+        pass
+
+    def wiggle(self):
+        # only move shoudler Servos 
+        # try to make it walk side
+        pass
+    
+class Leg:
+
+    servos = []
+    length = 0
+    alpha = 0
+    alphaMin = 90
+    beta = 0
+    gamma = 0
+
+    def __init__(self,servos,length = 135):
+        self.servos = servos
+        self.length = length
+
+    def moveUp(self):
+        # dont change alphaMin
+        # set a fixed height, calculate angles and move servos accordingly
+        upperPosition = 30
+        self.calculateByHeight(upperPosition)
+        self.moveServos()
+
+    def moveDown(self):
+        # dont change alphaMin
+        # set a fixed height, calculate angles and move servos accordingly
+        lowerPosition = 150
+        self.calculateByHeight(lowerPosition)
+        self.moveServos()
+
+    def moveForward(self):
+        # set alphaMin smaller to move leg forward
+        # all basic angles stay the same
+        pass
+    
+    def moveBackwards(self):
+        # set alphaMin higher to move leg backwards
+        # all basic angles stay the same
+        pass
+
+    def moveToOriginal(self):
+        # set alphaMin to 90 to move Leg back to standard positon
+        # all basic angles stay the same
+        pass
+
+    def calculateByHeight(self, height):
+        self.height = height
+        self.alpha = (math.acos((self.height**2 + self.length**2 - self.length**2) / (2 * self.height * self.length))) / ( math.pi / 180)
+        self.beta  = (math.acos((self.length**2 + self.length**2 - self.height**2) / (2 * self.length * self.length))) / ( math.pi / 180)
+        self.gamma = (math.acos((self.length**2 + self.height**2 - self.length**2) / (2 * self.length * self.height))) / ( math.pi / 180)
+
+    def moveServos(self):
+        self.servos[0].angle = self.alpha + self.alphaMin
+        self.servos[1].angle = self.beta
+        self.servos[2].angle = self.gamma

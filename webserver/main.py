@@ -1,13 +1,13 @@
-#import sys
+import sys
 
 # setting path
-#sys.path.append('..')
+sys.path.append('..')
 
 from typing import Union
 
 from fastapi import FastAPI
 
-import robot as ragna
+import robot.ragna_program as ragna
 
 app = FastAPI()
 

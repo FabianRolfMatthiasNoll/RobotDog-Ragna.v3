@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # importing the project specific robot classes
-import robot.models
+import robot.models as models
 
 from adafruit_motor import servo
 from adafruit_pca9685 import PCA9685

@@ -46,6 +46,9 @@ rightBackLeg = models.Leg(
          servo.Servo(controllerRight.channels[1], min_pulse = 400, max_pulse = 2500),
          servo.Servo(controllerRight.channels[2], min_pulse = 400, max_pulse = 2500)])
 
+# initializing robot
+robot = models.Robot()
+
 # to be added: a while loop tahts always true, at the start turn on a led to show that the robot is ready
 
 #led.on()

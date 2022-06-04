@@ -105,7 +105,7 @@ function App(){
         />
       </Center>
       <Center m={5}>
-        <Button
+        <Button onClick={() => sendCommand("standUp")}
           variant="solid"
           size="md"
           colorScheme="blackAlpha"
@@ -114,7 +114,7 @@ function App(){
         >
           stand up
         </Button>
-        <Button
+        <Button onClick={() => sendCommand("layDown")}
           variant="solid"
           size="md"
           colorScheme="blackAlpha"
@@ -125,7 +125,7 @@ function App(){
         </Button>
       </Center>
       <Center m={5}>
-        <Button
+        <Button onClick={() => sendCommand("wiggle")}
           variant="solid"
           size="md"
           colorScheme="blackAlpha"
@@ -134,7 +134,7 @@ function App(){
         >
           wiggle
         </Button>
-        <Button
+        <Button onClick={() => sendCommand("sit")}
           variant="solid"
           size="md"
           colorScheme="blackAlpha"

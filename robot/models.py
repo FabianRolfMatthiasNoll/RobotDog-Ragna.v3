@@ -1,5 +1,9 @@
+from gpiozero import LED
 import math
 import time
+
+# initialising GPIO17 as LED
+led = LED(17)
 
 class Leg:
 
@@ -16,6 +20,7 @@ class Leg:
     def __init__(self,servos,length = 135):
         self.servos = servos
         self.length = length
+        led.on()
 
     def moveUp(self):
         # dont change alphaMin
@@ -52,9 +57,13 @@ class Leg:
         self.beta  = (math.acos((self.length**2 + self.length**2 - self.height**2) / (2 * self.length * self.length))) / ( math.pi / 180)
         self.gamma = (math.acos((self.length**2 + self.height**2 - self.length**2) / (2 * self.length * self.height))) / ( math.pi / 180)
 
-    def moveServos(self):
-        self.servos[1].angle = self.alpha + self.alphaMin
-        self.servos[2].angle = self.beta
+    def moveServos(self,direction):
+        if direction == "right":
+            self.servos[1].angle = 180 - (self.alpha + self.alphaMin)
+            self.servos[2].angle = 180 - self.beta
+        if direction == "left":
+            self.servos[1].angle = self.alpha + self.alphaMin
+            self.servos[2].angle = self.beta
 
 class Robot:
     
@@ -95,10 +104,25 @@ class Robot:
         pass
 
     def standUp (self):
-        pass
+        self.leftFrontLeg.calculateByHeight(200)
+        self.leftBackLeg.calculateByHeight(200)
+        self.rightFrontLeg.calculateByHeight(200)
+        self.rightBackLeg.calculateByHeight(200)
+
+        self.leftFrontLeg.moveServos("left")
+        self.leftBackLeg.moveServos("left")
+        self.rightFrontLeg.moveServos("right")
+        self.rightBackLeg.moveServos("right")
 
     def layDown(self):
-        pass
+        self.leftFrontLeg.servos[1].angle = 180
+        self.leftFrontLeg.servos[2].angle = 180
+        self.leftBackLeg.servos[1].angle = 180
+        self.leftBackLeg.servos[2].angle = 180
+        self.rightFrontLeg.servos[1].angle = 180 - 180
+        self.rightFrontLeg.servos[2].angle = 180 - 180
+        self.rightBackLeg.servos[1].angle = 180 - 180
+        self.rightBackLeg.servos[2].angle = 180 - 180
 
     def wiggle(self):
         # only move shoudler Servos 

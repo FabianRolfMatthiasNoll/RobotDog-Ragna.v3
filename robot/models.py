@@ -38,12 +38,15 @@ class Robot:
     
 class Leg:
 
+    # alpha = firstServo | beta = secondServo | gamma = for calculation purpouses | delta = shoulderServo | alphaMin = for fwd and bwd movement
+    
     servos = []
     length = 0
     alpha = 0
     alphaMin = 90
     beta = 0
     gamma = 0
+    delta = 0
 
     def __init__(self,servos,length = 135):
         self.servos = servos
@@ -85,6 +88,5 @@ class Leg:
         self.gamma = (math.acos((self.length**2 + self.height**2 - self.length**2) / (2 * self.length * self.height))) / ( math.pi / 180)
 
     def moveServos(self):
-        self.servos[0].angle = self.alpha + self.alphaMin
-        self.servos[1].angle = self.beta
-        self.servos[2].angle = self.gamma
+        self.servos[1].angle = self.alpha + self.alphaMin
+        self.servos[2].angle = self.beta

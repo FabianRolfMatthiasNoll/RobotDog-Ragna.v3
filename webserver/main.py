@@ -36,25 +36,25 @@ def read_root():
 
 @app.get("/move_Left")
 def read_root():
-    ragna.robot.moveLeft
+    ragna.robot.moveLeft()
     return {}
 
 @app.get("/sit")
 def read_root():
-    ragna.robot.sit
+    ragna.robot.sit()
     return {}
 
 @app.get("/standUp")
 def read_root():
-    ragna.robot.standUp
+    ragna.robot.standUp()
     return {}
 
 @app.get("/layDown")
 def read_root():
-    ragna.robot.layDown
+    ragna.robot.layDown()
     return {}
 
 @app.get("/wiggle")
 def read_root():
-    ragna.robot.wiggle
+    ragna.robot.wiggle()
     return {}

@@ -10,7 +10,6 @@ from adafruit_pca9685 import PCA9685
 from board import SCL, SDA
 from gpiozero import LED
 import busio
-import time
 
 # initialising GPIO17 as LED
 led = LED(17)
@@ -47,7 +46,7 @@ rightBackLeg = models.Leg(
          servo.Servo(controllerRight.channels[2], min_pulse = 400, max_pulse = 2500)])
 
 # initializing robot
-robot = models.Robot()
+robot = models.Robot(leftFrontLeg,leftBackLeg,rightFrontLeg,rightBackLeg)
 
 # to be added: a while loop tahts always true, at the start turn on a led to show that the robot is ready
 

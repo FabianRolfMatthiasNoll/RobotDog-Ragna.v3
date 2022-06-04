@@ -1,41 +1,6 @@
 import math
+import time
 
-class Robot:
-    servos = []
-    name = 'Ragna'
-
-    def turnLeft(self):
-        pass
-
-    def turnRight(self):
-        pass
-
-    def moveLeft(self):
-        pass
-
-    def moveRight(self):
-        pass
-
-    def moveForward(self):
-        pass
-
-    def moveBackwards(self):
-        pass
-
-    def sit(self):
-        pass
-
-    def standUp (self):
-        pass
-
-    def layDown(self):
-        pass
-
-    def wiggle(self):
-        # only move shoudler Servos 
-        # try to make it walk side
-        pass
-    
 class Leg:
 
     # alpha = firstServo | beta = secondServo | gamma = for calculation purpouses | delta = shoulderServo | alphaMin = for fwd and bwd movement
@@ -90,3 +55,53 @@ class Leg:
     def moveServos(self):
         self.servos[1].angle = self.alpha + self.alphaMin
         self.servos[2].angle = self.beta
+
+class Robot:
+    
+    name = 'Ragna'
+
+    leftFrontLeg: Leg = None
+    leftBackLeg: Leg = None
+    rightFrontLeg: Leg = None
+    rightBackLeg: Leg = None
+
+    def __init__(self,leftFrontLeg,leftBackLeg,rightFrontLeg,rightBackLeg):
+        self.leftFrontLeg = leftFrontLeg
+        self.leftBackLeg = leftBackLeg
+        self.rightFrontLeg = rightFrontLeg
+        self.rightBackLeg = rightBackLeg
+    
+    def turnLeft(self):
+        pass
+
+    def turnRight(self):
+        pass
+
+    def moveLeft(self):
+        pass
+
+    def moveRight(self):
+        pass
+
+    def moveForward(self):
+        self.leftFrontLeg.moveUp()
+        time.sleep(1)
+        self.leftFrontLeg.moveDown()
+
+    def moveBackwards(self):
+        pass
+
+    def sit(self):
+        pass
+
+    def standUp (self):
+        pass
+
+    def layDown(self):
+        pass
+
+    def wiggle(self):
+        # only move shoudler Servos 
+        # try to make it walk side
+        pass
+    

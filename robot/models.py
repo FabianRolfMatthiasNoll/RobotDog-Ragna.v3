@@ -22,19 +22,19 @@ class Leg:
         self.length = length
         led.on()
 
-    def moveUp(self):
+    def moveUp(self, direction):
         # dont change alphaMin
         # set a fixed height, calculate angles and move servos accordingly
         upperPosition = 30
         self.calculateByHeight(upperPosition)
-        self.moveServos()
+        self.moveServos(direction)
 
-    def moveDown(self):
+    def moveDown(self, direction):
         # dont change alphaMin
         # set a fixed height, calculate angles and move servos accordingly
         lowerPosition = 150
         self.calculateByHeight(lowerPosition)
-        self.moveServos()
+        self.moveServos(direction)
 
     def moveForward(self):
         # set alphaMin smaller to move leg forward
@@ -73,6 +73,7 @@ class Robot:
     leftBackLeg: Leg = None
     rightFrontLeg: Leg = None
     rightBackLeg: Leg = None
+    buttonState = 1
 
     def __init__(self,leftFrontLeg,leftBackLeg,rightFrontLeg,rightBackLeg):
         self.leftFrontLeg = leftFrontLeg
@@ -89,6 +90,12 @@ class Robot:
     
     def turnLeft(self):
         pass
+        #while self.buttonState == 1:
+        #    self.leftFrontLeg.moveUp("left")
+        #    time.sleep(1)
+        #    self.leftFrontLeg.moveDown("left")
+        #    time.sleep(1)
+        #self.buttonState = 1
 
     def turnRight(self):
         pass
@@ -100,9 +107,7 @@ class Robot:
         pass
 
     def moveForward(self):
-        self.leftFrontLeg.moveUp()
-        time.sleep(1)
-        self.leftFrontLeg.moveDown()
+        pass
 
     def moveBackwards(self):
         pass

@@ -39,6 +39,8 @@ function App(){
       </Text>
       <Center m={5}>
         <IconButton
+          onMouseDown={() => sendCommand("move_left_start")}
+          onMouseUp={() => sendCommand("move_left_stop")}
           aria-label="icon"
           icon={<ArrowLeftIcon />}
           size="md"
@@ -48,6 +50,8 @@ function App(){
           
         />
         <IconButton
+          onMouseDown={() => sendCommand("move_forward_start")}
+          onMouseUp={() => sendCommand("move_forward_stop")}
           aria-label="icon"
           icon={<ChevronUpIcon />}
           size="md"
@@ -55,7 +59,9 @@ function App(){
           mr={2}
           colorScheme="blackAlpha"
         />
-        <IconButton onClick={() => sendCommand("turn_right")}
+        <IconButton 
+          onMouseDown={() => sendCommand("move_right")}
+          onMouseUp={() => sendCommand("move_right_stop")}
           aria-label="icon"
           icon={<ArrowRightIcon />}
           size="md"
@@ -65,7 +71,9 @@ function App(){
         />
       </Center>
       <Center m={5}>
-        <IconButton onClick={() => sendCommand("turn_left")}
+        <IconButton 
+          onMouseDown={() => sendCommand("turn_left_start")}
+          onMouseUp={() => sendCommand("turn_left_stop")}
           aria-label="icon"
           icon={<ChevronLeftIcon />}
           size="md"
@@ -75,7 +83,7 @@ function App(){
         />
         
 
-        <IconButton onMouseDown={() => sendCommand("move_forward")}
+        <IconButton 
           aria-label="icon"
           icon={<CloseIcon />}
           size="md"
@@ -86,6 +94,8 @@ function App(){
 
         
         <IconButton
+          onMouseDown={() => sendCommand("turn_right_start")}
+          onMouseUp={() => sendCommand("turn_right_stop")}
           aria-label="icon"
           icon={<ChevronRightIcon />}
           size="md"
@@ -96,6 +106,8 @@ function App(){
       </Center>
       <Center m={5}>
         <IconButton
+          onMouseDown={() => sendCommand("move_backwards_start")}
+          onMouseUp={() => sendCommand("move_backwards_stop")}
           aria-label="icon"
           icon={<ChevronDownIcon />}
           size="md"

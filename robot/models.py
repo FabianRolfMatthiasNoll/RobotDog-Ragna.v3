@@ -79,6 +79,13 @@ class Robot:
         self.leftBackLeg = leftBackLeg
         self.rightFrontLeg = rightFrontLeg
         self.rightBackLeg = rightBackLeg
+
+        self.leftFrontLeg.servos[0].angle = 90
+        self.rightFrontLeg.servos[0].angle = 80
+        self.leftBackLeg.servos[0].angle = 90
+        self.rightBackLeg.servos[0].angle = 90
+
+        self.standUp()
     
     def turnLeft(self):
         pass
